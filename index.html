@@ -127,6 +127,9 @@
             font-family: 'Avantique', sans-serif;
             font-weight: 700;
             font-synthesis: none;
+            font-size: clamp(2.25rem, 4.8vw + 1rem, 3.75rem);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
         }
 
         .hero-title span {
@@ -1045,6 +1048,65 @@
             color: rgba(226, 190, 124, 0.75);
         }
 
+        .section-title {
+            font-family: 'Avantique', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.125rem, 3.8vw + 1rem, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #FDFEFE;
+            text-wrap: balance;
+        }
+
+        .section-title--lg {
+            font-size: clamp(2.375rem, 4.6vw + 1rem, 4.25rem);
+            line-height: 1.06;
+            letter-spacing: -0.035em;
+        }
+
+        .section-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+
+        .section-cta--start {
+            justify-content: center;
+        }
+
+        @media (min-width: 1024px) {
+            .section-cta--start {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .section-cta {
+                margin-top: 3rem;
+            }
+        }
+
+        .btn-section {
+            width: 100%;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 1.25rem 2.5rem;
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 30px rgba(163, 136, 70, 0.35);
+        }
+
+        @media (min-width: 640px) {
+            .btn-section {
+                width: auto;
+            }
+        }
+
+        .btn-section:hover {
+            transform: translateY(-4px);
+        }
+
         .diagnostico-title {
             display: flex;
             flex-direction: column;
@@ -1605,7 +1667,7 @@
 
                 <p class="section-eyebrow section-eyebrow--gold mb-6 md:mb-8">Imersão LEX · Líder Exponencial</p>
 
-                <h1 class="hero-title font-display text-3xl md:text-5xl lg:text-5xl font-bold leading-[1.12] text-brand-textPrimary mb-6 tracking-tight">
+                <h1 class="hero-title text-brand-textPrimary mb-6">
                     Você não tem um<br>
                     <span class="hero-title-line">problema de operação.</span><br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-goldLight to-brand-goldDeep">Você tem um teto de autoridade.</span>
@@ -1616,7 +1678,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center gap-6 mb-12">
-                    <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold w-full sm:w-auto font-bold uppercase tracking-[0.15em] py-5 px-10 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(163,136,70,0.35)] hover:-translate-y-1 text-center">
+                    <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
                         Quero entrar no grupo agora
                     </button>
                 </div>
@@ -1657,13 +1719,18 @@
         <div class="container mx-auto px-6 max-w-content relative z-10">
             <div class="text-center max-w-3xl mx-auto">
                 <p class="section-eyebrow section-eyebrow--gold mb-6" data-aos="fade-up">A virada</p>
-                <h2 class="text-3xl md:text-5xl font-black text-brand-textPrimary leading-tight mb-8" data-aos="fade-right" data-aos-delay="100">
+                <h2 class="section-title mb-8" data-aos="fade-right" data-aos-delay="100">
                     Seu negócio é bom demais para continuar sendo o <span class="title-accent">segredo mais bem guardado</span> do seu mercado.
                 </h2>
                 <div class="space-y-6 text-brand-textSecondary text-lg leading-relaxed text-left md:text-center" data-aos="fade-up" data-aos-delay="200">
                     <p>Você entrega mais. Trabalha mais. Carrega mais. E mesmo assim vê gente com metade da sua entrega ocupando o espaço que era pra ser seu.</p>
                     <p>O gargalo não é a sua operação. É o teto que você mesmo construiu sobre a sua autoridade.</p>
                     <p class="text-brand-textPrimary font-semibold text-xl">A LEX existe pra quebrar esse teto.</p>
+                </div>
+                <div class="section-cta" data-aos="fade-up" data-aos-delay="300">
+                    <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
+                        Quero entrar no grupo agora
+                    </button>
                 </div>
             </div>
         </div>
@@ -1674,7 +1741,7 @@
         <div class="container mx-auto px-6 max-w-content relative z-10">
             <div class="text-center mb-16">
                 <p class="section-eyebrow text-center" data-aos="fade-up">Transformação</p>
-                <h2 class="text-3xl md:text-5xl font-black text-brand-textPrimary mb-4" data-aos="fade-right" data-aos-delay="100">O que se destrava <span class="text-gradient-gold">na LEX</span></h2>
+                <h2 class="section-title mb-4" data-aos="fade-right" data-aos-delay="100">O que se destrava <span class="text-gradient-gold">na LEX</span></h2>
             </div>
 
             <div class="space-y-4">
@@ -1703,6 +1770,12 @@
                     <p class="text-brand-textPrimary text-lg font-medium">Construir a liderança que forma outros líderes — e deixa legado</p>
                 </div>
             </div>
+
+            <div class="section-cta" data-aos="fade-up" data-aos-delay="500">
+                <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
+                    Quero destravar minha autoridade
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1721,11 +1794,16 @@
 
                 <div class="space-y-8" data-aos="fade-left">
                     <p class="section-eyebrow section-eyebrow--gold">Quem conduz</p>
-                    <h2 class="text-3xl md:text-5xl font-black text-brand-textPrimary leading-tight">
+                    <h2 class="section-title">
                         Conduzido por quem <span class="text-brand-primary">forma os formadores.</span>
                     </h2>
                     <div class="space-y-6 text-brand-textSecondary text-lg leading-relaxed">
                         <p>Mateus Ribeiro não treina seguidores. Ele forma líderes que formam outros líderes. A LEX é onde isso acontece presencialmente, nos dias 8 e 9 de agosto, em Alphaville (SP).</p>
+                    </div>
+                    <div class="section-cta section-cta--start !mt-8" data-aos="fade-up" data-aos-delay="200">
+                        <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
+                            Quero entrar no grupo agora
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1736,7 +1814,7 @@
     <section id="galeria" class="py-20 bg-brand-surface border-y border-white/5 overflow-hidden">
         <div class="container mx-auto px-6 max-w-content mb-12 text-center">
             <p class="section-eyebrow text-center" data-aos="fade-right">Viva a experiência</p>
-            <h2 class="text-3xl md:text-5xl font-black text-brand-textPrimary mb-4" data-aos="fade-left" data-aos-delay="100">Momentos <span class="text-brand-goldLight">inesquecíveis</span></h2>
+            <h2 class="section-title mb-4" data-aos="fade-left" data-aos-delay="100">Momentos <span class="text-brand-goldLight">inesquecíveis</span></h2>
             <p class="text-brand-textSecondary max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Registros reais de edições anteriores, conexão, propósito e liderança exponencial em ação.</p>
         </div>
 
@@ -1745,6 +1823,14 @@
         </div>
         <div class="marquee-mask" data-aos="fade-left" data-aos-delay="200">
             <div id="marquee-row-2" class="animate-marquee-reverse marquee-track"></div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-content">
+            <div class="section-cta !mt-10" data-aos="fade-up" data-aos-delay="300">
+                <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
+                    Quero viver essa experiência
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1756,7 +1842,7 @@
         <div class="container mx-auto px-6 max-w-content relative z-10">
             <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
                 <p class="section-eyebrow text-center" data-aos="fade-up">Perfil ideal</p>
-                <h2 class="text-3xl md:text-5xl font-black text-brand-textPrimary leading-tight" data-aos="fade-right" data-aos-delay="100">
+                <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
                     A LEX é pra você <span class="text-gradient-gold">se:</span>
                 </h2>
             </div>
@@ -1784,6 +1870,12 @@
                 <p class="text-center text-brand-textSecondary text-lg leading-relaxed mt-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">
                     Não é mais um curso de ferramentas. Não é palestra pra você se sentir bem por dois dias e voltar ao mesmo lugar.
                 </p>
+
+                <div class="section-cta" data-aos="fade-up" data-aos-delay="250">
+                    <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
+                        Quero entrar no grupo agora
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1796,7 +1888,7 @@
         <div class="container mx-auto px-6 max-w-content relative z-10">
             <div class="text-center mb-16 md:mb-20">
                 <p class="section-eyebrow section-eyebrow--gold text-center mb-6" data-aos="fade-right">Na abertura</p>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-brand-textPrimary mb-5 tracking-tight" data-aos="fade-left" data-aos-delay="100">
+                <h2 class="section-title section-title--lg mb-5" data-aos="fade-left" data-aos-delay="100">
                     O que te espera <span class="title-accent">dentro</span>
                 </h2>
                 <p class="text-brand-textSecondary text-lg max-w-2xl mx-auto leading-relaxed" data-aos="fade-right" data-aos-delay="200">
@@ -1849,7 +1941,7 @@
             </div>
 
             <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
-                <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold font-bold uppercase tracking-[0.15em] py-5 px-10 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(163,136,70,0.35)] hover:-translate-y-1">
+                <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
                     Quero entrar no grupo agora
                 </button>
             </div>
@@ -1861,7 +1953,7 @@
         <div class="container mx-auto px-6 max-w-content relative z-10">
             <div class="text-center mb-16">
                 <p class="section-eyebrow text-center" data-aos="fade-up">Antecipação</p>
-                <h2 class="text-3xl md:text-4xl font-black text-brand-textPrimary" data-aos="fade-right" data-aos-delay="100">Por que entrar no grupo <span class="text-gradient-gold">agora</span></h2>
+                <h2 class="section-title mb-4" data-aos="fade-right" data-aos-delay="100">Por que entrar no grupo <span class="text-gradient-gold">agora</span></h2>
             </div>
 
             <div class="space-y-5 max-w-4xl mx-auto">
@@ -1890,6 +1982,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="section-cta" data-aos="fade-up" data-aos-delay="400">
+                <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section">
+                    Garantir meu lugar no grupo
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1897,9 +1995,9 @@
     <section class="cta-section py-28 md:py-32 relative overflow-hidden border-t border-white/5 text-center">
         <div class="container mx-auto px-6 max-w-content relative z-10">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black text-brand-textPrimary mb-6" data-aos="fade-right" data-aos-delay="100">Ocupe seu lugar <span class="title-accent">antes da virada.</span></h2>
+            <h2 class="section-title mb-6" data-aos="fade-right" data-aos-delay="100">Ocupe seu lugar <span class="title-accent">antes da virada.</span></h2>
 
-            <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold w-full sm:w-auto font-bold uppercase tracking-[0.15em] py-5 px-12 rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(163,136,70,0.35)] hover:-translate-y-1 mb-8" data-aos="fade-up" data-aos-delay="300">
+            <button type="button" onclick="abrirPopupMLex()" class="btn-shimmer btn-gold btn-section mb-8" data-aos="fade-up" data-aos-delay="300">
                 Quero meu lugar no grupo
             </button>
 
