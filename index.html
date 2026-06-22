@@ -2078,7 +2078,7 @@
                 <p class="text-sm text-brand-textSecondary">Preencha abaixo e entre agora.</p>
             </div>
 
-            <form id="form-m-lex" class="space-y-4 mt-6 popup-form" data-redirect="https://sndflw.com/i/m-lex">
+            <form id="form-m-lex" class="space-y-4 mt-6 popup-form" data-redirect="https://sndflw.com/i/m-lex" data-webhook="https://hook.us2.make.com/6qaglponybteo2l6d187c5p91i7r1tae?produto=m-lex">
                 <div>
                     <label for="lead-nome-m-lex" class="block text-sm font-medium text-brand-textSecondary mb-1">Nome</label>
                     <input type="text" id="lead-nome-m-lex" name="nome" required placeholder="Seu nome completo" class="w-full px-4 py-3 rounded-lg bg-brand-bg border border-white/10 text-brand-textPrimary placeholder-brand-textMuted focus:border-brand-goldLight focus:ring-1 focus:ring-brand-goldLight outline-none transition-all duration-200 hover:border-white/25">
@@ -2095,13 +2095,12 @@
                     </div>
                     <p class="error-msg text-brand-goldLight text-xs mt-1 hidden"><i class="fas fa-exclamation-circle mr-1"></i>Informe o DDD e o número completo.</p>
                 </div>
-                <input type="hidden" name="slug" value="m-lex">
-                <input type="hidden" name="utm_source" value="">
-                <input type="hidden" name="utm_term" value="">
-                <input type="hidden" name="utm_campaign" value="m-lex">
-                <input type="hidden" name="utm_medium" value="">
-                <input type="hidden" name="utm_content" value="">
-                <input type="hidden" name="url" value="">
+                <input type="hidden" id="utm_source" name="utm_source" value="">
+                <input type="hidden" id="utm_term" name="utm_term" value="">
+                <input type="hidden" id="utm_campaign" name="utm_campaign" value="m-lex">
+                <input type="hidden" id="utm_medium" name="utm_medium" value="">
+                <input type="hidden" id="utm_content" name="utm_content" value="">
+                <input type="hidden" id="url" name="url" value="">
                 <button type="submit" class="btn-shimmer btn-gold w-full font-sans font-bold py-4 rounded-xl uppercase tracking-widest transition-all duration-300 hover:-translate-y-0.5 btn-submit mt-2">
                     Entrar no grupo agora
                 </button>
@@ -2138,11 +2137,12 @@
         buildMarqueeRow('marquee-row-2', row2, true);
 
         const M_LEX_REDIRECT = 'https://sndflw.com/i/m-lex';
+        const M_LEX_WEBHOOK = 'https://hook.us2.make.com/6qaglponybteo2l6d187c5p91i7r1tae?produto=m-lex';
         const popupMLex = document.getElementById('popup-m-lex');
         const formMLex = document.getElementById('form-m-lex');
 
         function abrirPopupMLex() {
-            preencherCamposTracking(formMLex);
+            preencherCamposTracking();
             popupMLex.classList.remove('hidden');
             popupMLex.classList.add('flex');
             popupMLex.setAttribute('aria-hidden', 'false');
@@ -2163,13 +2163,13 @@
             if (popupMLex.classList.contains('flex')) fecharPopupMLex();
         });
 
-        function preencherCamposTracking(form) {
+        function preencherCamposTracking() {
             const params = new URLSearchParams(window.location.search);
             ['utm_source', 'utm_term', 'utm_campaign', 'utm_medium', 'utm_content'].forEach((campo) => {
-                const el = form.querySelector(`[name="${campo}"]`);
+                const el = document.getElementById(campo);
                 if (el) el.value = params.get(campo) || el.defaultValue || el.value;
             });
-            const urlEl = form.querySelector('[name="url"]');
+            const urlEl = document.getElementById('url');
             if (urlEl) urlEl.value = window.location.href;
         }
 
@@ -2196,7 +2196,7 @@
                 const btnSubmit = form.querySelector('.btn-submit');
                 const errorMsg = form.querySelector('.error-msg');
                 const redirectTarget = form.dataset.redirect || M_LEX_REDIRECT;
-                const webhookUrl = form.dataset.webhook;
+                const webhookUrl = form.dataset.webhook || M_LEX_WEBHOOK;
                 const telefoneFormatado = telInput.value.trim();
                 const rawPhone = telefoneFormatado.replace(/\D/g, '');
                 if (rawPhone.length < 10) {
@@ -2210,16 +2210,15 @@
                 const email = form.querySelector('[name="email"]').value.trim();
                 const telefone = '+55' + rawPhone;
                 const payload = {
-                    slug: form.querySelector('[name="slug"]')?.value || 'm-lex',
                     nome: nome,
                     email: email,
                     telefone: telefone,
-                    utm_source: form.querySelector('[name="utm_source"]')?.value || '',
-                    utm_term: form.querySelector('[name="utm_term"]')?.value || '',
-                    utm_campaign: form.querySelector('[name="utm_campaign"]')?.value || 'm-lex',
-                    utm_medium: form.querySelector('[name="utm_medium"]')?.value || '',
-                    utm_content: form.querySelector('[name="utm_content"]')?.value || '',
-                    url: form.querySelector('[name="url"]')?.value || window.location.href
+                    utm_source: document.getElementById('utm_source')?.value || '',
+                    utm_term: document.getElementById('utm_term')?.value || '',
+                    utm_campaign: document.getElementById('utm_campaign')?.value || '',
+                    utm_medium: document.getElementById('utm_medium')?.value || '',
+                    utm_content: document.getElementById('utm_content')?.value || '',
+                    url: document.getElementById('url')?.value || window.location.href
                 };
 
                 if (webhookUrl) {
