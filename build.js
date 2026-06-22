@@ -111,12 +111,12 @@ function injectSeoAndPerformance(html) {
 function fixAccessibility(html) {
   return html
     .replace(
-      'src="assets/hero-bg.webp" alt="" class="hero-bg-img',
-      'src="assets/hero-bg.webp" alt="Ambiente da Imersão LEX" class="hero-bg-img'
+      'src="assets/captura-web.webp" alt="" class="hero-bg-img',
+      'src="assets/captura-web.webp" alt="Ambiente da Imersão LEX" class="hero-bg-img'
     )
     .replace(
-      'src="assets/hero-bg-mobile.webp" alt="" loading="eager"',
-      'src="assets/hero-bg-mobile.webp" alt="Ambiente da Imersão LEX" loading="eager"'
+      'src="assets/mobile-2.webp" alt="" loading="eager"',
+      'src="assets/mobile-2.webp" alt="Ambiente da Imersão LEX" loading="eager"'
     )
     .replace(
       'src="assets/asset-39.webp" alt="" class="video-poster-img"',
